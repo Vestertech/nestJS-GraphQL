@@ -68,3 +68,5 @@ Nest is an MIT-licensed open source project. It can grow thanks to the sponsors 
 Steps
 !. Register a GraphQl module, create graphql type , Create a resolver.
 !. pass the resolver inside the app.module.ts file.
+
+<!-- REUSING CLASS FOR TYPEORM AND GRAPHQL, you do so by calling difft decorators from difft packages -->

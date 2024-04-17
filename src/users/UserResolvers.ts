@@ -7,9 +7,9 @@ import {
   ResolveField,
   Resolver,
 } from '@nestjs/graphql';
-import { User } from '../models/User';
+import { User } from '../graphql/models/User';
 import { mockUsers } from 'src/__mocks__/mockUsers';
-import { UserSetting } from '../models/userSettings';
+import { UserSetting } from '../graphql/models/UserSetting';
 import { mockUserSettings } from 'src/__mocks__/`mockUserSettings';
 import { CreateUserInput } from 'src/utils/CreateUserInput';
 export let incrementalId = 3;
