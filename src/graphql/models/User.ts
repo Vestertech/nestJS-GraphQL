@@ -19,7 +19,7 @@ export class User {
   @Field()
   username: string;
 
-  @Column()
+  @Column({ nullable: true })
   @Field({ nullable: true })
   displayName?: string;
 

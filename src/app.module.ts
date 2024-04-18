@@ -24,10 +24,11 @@ import { UsersModule } from './users/users.module';
       database: 'graphql_',
       entities: [User, UserSetting],
       synchronize: true,
+      logging: true,
     }),
     UsersModule,
   ],
   controllers: [],
-  providers: [UserSettingsResolver],
+  providers: [],
 })
 export class AppModule {}
