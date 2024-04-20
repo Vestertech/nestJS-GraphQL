@@ -2,9 +2,9 @@ import { Module } from '@nestjs/common';
 import { UserResolver } from './UserResolvers';
 import { UserService } from './UserService';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { User } from 'src/graphql/models/User';
-import { UserSettingsResolver } from 'src/graphql/resolvers/UserSettingsResolver';
-import { UserSetting } from 'src/graphql/models/UserSetting';
+import { User } from '../graphql/models/User';
+import { UserSettingsResolver } from '../graphql/resolvers/UserSettingsResolver';
+import { UserSetting } from '../graphql/models/UserSetting';
 import { UserSettingService } from './UserSettingService';
 
 @Module({

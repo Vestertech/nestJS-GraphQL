@@ -8,6 +8,7 @@ import { User } from './graphql/models/User';
 import { UserSetting } from './graphql/models/UserSetting';
 import { UsersModule } from './users/users.module';
 
+console.log(process.env.NODE_ENV === 'TEST');
 @Module({
   imports: [
     GraphQLModule.forRoot<ApolloDriverConfig>({
@@ -21,7 +22,7 @@ import { UsersModule } from './users/users.module';
       port: 3306,
       username: 'testuser',
       password: 'testuser123',
-      database: 'graphql_',
+      database: process.env.NODE_ENV === 'TEST' ? 'graphql_test' : 'graphql_',
       entities: [User, UserSetting],
       synchronize: true,
       logging: true,
