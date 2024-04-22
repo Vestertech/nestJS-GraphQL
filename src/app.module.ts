@@ -25,7 +25,7 @@ console.log(process.env.NODE_ENV === 'TEST');
       database: process.env.NODE_ENV === 'TEST' ? 'graphql_test' : 'graphql_',
       entities: [User, UserSetting],
       synchronize: true,
-      logging: true,
+      logging: false,
     }),
     UsersModule,
   ],
