@@ -3,6 +3,8 @@ import { INestApplication } from '@nestjs/common';
 import * as request from 'supertest';
 import { AppModule } from './../src/app.module';
 import { DataSource } from 'typeorm';
+import { print } from 'graphql';
+import { createUserMutation, getUsersQuery } from '../src/utils/queries';
 
 describe('Graphql Server (e2e)', () => {
   let app: INestApplication;
@@ -28,11 +30,11 @@ describe('Graphql Server (e2e)', () => {
     await app.close();
   });
 
-  describe('getUsers', () => {
+  describe('users', () => {
     it('should query getUsers and return 0 users', () => {
       return request(app.getHttpServer())
         .post('/graphql')
-        .send({ query: '{getUsers{id username displayName}}' })
+        .send({ query: print(getUsersQuery) })
         .expect((res) => {
           expect(res.body.data.getUsers).toHaveLength(0);
         });
@@ -42,12 +44,12 @@ describe('Graphql Server (e2e)', () => {
       return request(app.getHttpServer())
         .post('/graphql')
         .send({
-          query:
-            'mutation{createUser(createUserData:{username:"sylvester",displayName:"Sylvester"}){username displayName}}',
+          query: print(createUserMutation),
         })
         .expect(200)
         .expect((res) => {
           expect(res.body.data.createUser).toEqual({
+            id: 1,
             username: 'sylvester',
             displayName: 'Sylvester',
           });
@@ -57,7 +59,7 @@ describe('Graphql Server (e2e)', () => {
     it('should query getUsers and return 1 users', () => {
       return request(app.getHttpServer())
         .post('/graphql')
-        .send({ query: '{getUsers{id username displayName}}' })
+        .send({ query: print(getUsersQuery) })
         .expect((res) => {
           expect(res.body.data.getUsers).toHaveLength(1);
         });
